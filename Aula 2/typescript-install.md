@@ -26,10 +26,10 @@ Verificar instalação do node e npm:
 
 ## Running typescript directly
 
-Instalar ts-node
+Instalar tsx
 
-`npm install -g ts-node`
+`npm install -g tsx`
 
-Correr ts-node
+Correr tsx
 
-`ts-node main`
+`tsx main`
