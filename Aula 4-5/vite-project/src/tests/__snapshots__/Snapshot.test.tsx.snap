@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Must match snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      Counter
+    </div>
+    <div>
+      Valor: 
+      0
+    </div>
+    <button>
+      Incrementar
+    </button>
+  </div>
+</div>
+`;
