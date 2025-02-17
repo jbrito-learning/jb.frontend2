@@ -15,4 +15,4 @@
 
 - Animations
 - React Query
-- useRef & useMemo
+- useMemo, useCallback & useRef
