@@ -5,8 +5,13 @@ export const NameContext = createContext({ name: "" });
 
 export const NameProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <NameContext.Provider value={{ name: "React" }}>
+    <NameContext.Provider value={{ name: "Bola de berlim" }}>
       {children}
     </NameContext.Provider>
   );
 };
+
+export const TemaContext = createContext({
+  tema: "claro",
+  setTema: () => {},
+});

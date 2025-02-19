@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
+import { ThemeButton } from "../components/ThemeButton";
+import { ThemeProvider } from "../contexts/ThemeContext";
 
 const AboutPage = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
+    <ThemeProvider>
       <Outlet />
-    </div>
+      <h1>About me</h1>
+      <ThemeButton />
+    </ThemeProvider>
   );
 };
 
