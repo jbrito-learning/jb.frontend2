@@ -1,12 +1,19 @@
+"use client";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { store } from "@/components/redux/store";
+import { Provider } from "react-redux";
+
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <Navbar />
-      {children}
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <div>
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </div>
+    </Provider>
   );
 };
 
