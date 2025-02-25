@@ -9,7 +9,7 @@ const Navbar = () => {
   const count = useSelector((state: RootState) => state.counter.value);
 
   return (
-    <div
+    <header
       style={{
         width: "100%",
         maxWidth: "100vw",
@@ -58,7 +58,7 @@ const Navbar = () => {
         </Link>
         <Link href="/contact">Contact</Link>
       </nav>
-    </div>
+    </header>
   );
 };
 

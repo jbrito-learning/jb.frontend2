@@ -8,11 +8,9 @@ import { Provider } from "react-redux";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
-      <div>
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-      </div>
+      <Navbar />
+      <main className="min-h-screen">{children}</main>
+      <Footer />
     </Provider>
   );
 };

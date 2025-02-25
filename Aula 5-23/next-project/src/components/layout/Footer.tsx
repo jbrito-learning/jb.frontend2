@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div
+    <footer
       style={{
         width: "100%",
         maxWidth: "100vw",
@@ -13,7 +13,7 @@ const Footer = () => {
       }}
     >
       <div>Project Name</div>
-    </div>
+    </footer>
   );
 };
 
