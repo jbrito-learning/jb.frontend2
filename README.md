@@ -27,3 +27,5 @@
 - React Query
 
 - useMemo, useCallback & useRef
+
+- Prisma
