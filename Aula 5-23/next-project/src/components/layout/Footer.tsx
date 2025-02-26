@@ -1,18 +1,11 @@
 const Footer = () => {
   return (
-    <footer
-      style={{
-        width: "100%",
-        maxWidth: "100vw",
-        padding: "15px",
-        background: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "black",
-      }}
-    >
-      <div>Project Name</div>
+    <footer className="w-full max-w-[100vw] py-4 bg-white flex justify-center items-center text-black border-t">
+      <div className="text-center">
+        <p className="text-sm text-gray-600">
+          © 2023 Project Name. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 };

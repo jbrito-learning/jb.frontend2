@@ -6,57 +6,34 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 
 const Navbar = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
+  const count = useSelector((state: RootState) => state.cart.items.length);
 
   return (
-    <header
-      style={{
-        width: "100%",
-        maxWidth: "100vw",
-        padding: "15px 30px",
-        background: "white",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        color: "black",
-        position: "fixed",
-      }}
-    >
-      <Link href="/" style={{ fontSize: "24px", fontWeight: "bold" }}>
+    <header className="w-full max-w-[100vw] px-8 py-4 bg-white flex justify-between items-center text-black fixed z-10 shadow-sm">
+      <Link href="/" className="text-2xl font-bold">
         Project Name
       </Link>
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: "20px",
-        }}
-      >
-        <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
-        <Link href="/cart" style={{ position: "relative", display: "flex" }}>
-          <ShoppingCart size={24} />
-          <span
-            style={{
-              position: "absolute",
-              top: "-8px",
-              right: "-8px",
-              background: "#ff4444",
-              color: "white",
-              borderRadius: "50%",
-              width: "20px",
-              height: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: "12px",
-            }}
-          >
-            {count}
-          </span>
+      <nav className="flex justify-end items-center gap-6">
+        <Link href="/" className="hover:text-blue-600 transition-colors">
+          Home
         </Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/about" className="hover:text-blue-600 transition-colors">
+          About
+        </Link>
+        <Link
+          href="/cart"
+          className="relative flex hover:text-blue-600 transition-colors"
+        >
+          <ShoppingCart size={24} />
+          {count > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex justify-center items-center text-xs">
+              {count}
+            </span>
+          )}
+        </Link>
+        <Link href="/contact" className="hover:text-blue-600 transition-colors">
+          Contact
+        </Link>
       </nav>
     </header>
   );

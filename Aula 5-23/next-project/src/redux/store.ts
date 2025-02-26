@@ -5,6 +5,7 @@ import counterReducer from "./counterSlice";
 import cartReducer from "./cartSlice";
 import loggerMiddleware from "./middleware";
 import usersReducer from "./userSlice";
+import productsReducer from "./productsSlice";
 
 const persistConfig = {
   key: "root",
@@ -14,12 +15,14 @@ const persistConfig = {
 const persistedCounterReducer = persistReducer(persistConfig, counterReducer);
 const persistedCartReducer = persistReducer(persistConfig, cartReducer);
 const persistedUsersReducer = persistReducer(persistConfig, usersReducer);
+const persistedProductsReducer = persistReducer(persistConfig, productsReducer);
 
 export const store = configureStore({
   reducer: {
     counter: persistedCounterReducer,
     cart: persistedCartReducer,
     users: persistedUsersReducer,
+    products: persistedProductsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -6,6 +6,7 @@ import { RootState, AppDispatch } from "@/redux/store";
 interface User {
   id: number;
   name: string;
+  email: string;
 }
 
 function UserList() {
@@ -29,7 +30,9 @@ function UserList() {
   return (
     <ul>
       {users.map((user: User) => (
-        <li key={user.id}>{user.name}</li>
+        <li key={user.id}>
+          {user.name} | {user.email}
+        </li>
       ))}
     </ul>
   );
