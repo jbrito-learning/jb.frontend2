@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "@/components/redux/store";
+import { RootState } from "@/redux/store";
 
 const Navbar = () => {
   const count = useSelector((state: RootState) => state.counter.value);

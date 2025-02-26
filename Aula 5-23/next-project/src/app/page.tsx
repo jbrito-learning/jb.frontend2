@@ -1,13 +1,14 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { incrementByAmount } from "@/components/redux/counterSlice";
-
+import { incrementByAmount } from "@/redux/counterSlice";
+import UserList from "@/components/UserList";
 export default function Home() {
   const dispatch = useDispatch();
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <UserList />
       <button
         style={{
           backgroundColor: "white",
@@ -16,7 +17,7 @@ export default function Home() {
           borderRadius: "5px",
           cursor: "pointer",
         }}
-        onClick={() => dispatch(incrementByAmount(10))}
+        onClick={() => dispatch(incrementByAmount(1))}
       >
         Add to cart
       </button>

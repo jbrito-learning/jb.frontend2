@@ -2,15 +2,18 @@
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { store } from "@/components/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "@/redux/store";
 import { Provider } from "react-redux";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
-      <Navbar />
-      <main className="min-h-screen">{children}</main>
-      <Footer />
+      <PersistGate loading={null} persistor={persistor}>
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </PersistGate>
     </Provider>
   );
 };
