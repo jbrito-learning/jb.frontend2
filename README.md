@@ -6,21 +6,21 @@
 
 - Hooks (useState & useEffect)
 
-- ContextAPI or Redux
-
 - Styling (CSS, Tailwind or StyledComponents)
 
 - Authentication
 
 - SEO
 
-- Unit Testing (Pelo menos 3 testes)
+- Unit Testing (Pelo menos 4 testes)
 
 - API CRUD Operations (Fetch or Axios)
 
 - Navigation
 
 ## Bonus
+
+- ContextAPI or Redux
 
 - Animations
 
