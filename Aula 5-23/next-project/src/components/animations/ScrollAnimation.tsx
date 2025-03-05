@@ -13,9 +13,9 @@ export default function ScrollAnimation() {
       <div className="h-96"></div> {/* Espaço para scroll */}
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 50 }} // Começa invisível e deslocado para baixo
-        animate={isInView ? { opacity: 1, y: 0 } : {}} // Aparece quando entra na tela
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 0, y: 50, scale: 0.2 }} // Começa invisível e deslocado para baixo
+        animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}} // Aparece quando entra na tela
+        transition={{ duration: 5 }}
         className="w-64 h-64 bg-purple-500 text-white flex items-center justify-center rounded-lg"
       >
         Apareci ao fazer scroll! 🎉
