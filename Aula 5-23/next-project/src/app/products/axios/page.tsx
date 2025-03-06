@@ -2,14 +2,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Product } from "../services/api";
+import { Product } from "../../services/api";
 import {
   getProductsWithAxios,
   getProductByIdWithAxios,
   createProductWithAxios,
   updateProductWithAxios,
   deleteProductWithAxios,
-} from "../services/axiosApi";
+} from "@/app/services/axiosApi";
 
 const ProductsAxiosPage = () => {
   const [products, setProducts] = useState<Product[]>([]);

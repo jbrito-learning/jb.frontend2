@@ -9,7 +9,7 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "../services/api";
+} from "@/app/services/api";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
