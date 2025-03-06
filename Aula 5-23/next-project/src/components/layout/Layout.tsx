@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Navbar />
-        <main className="min-h-screen overflow-hidden">{children}</main>
+        <main className="min-h-screen overflow-hidden py-20">{children}</main>
         <Footer />
       </PersistGate>
     </Provider>

@@ -27,6 +27,12 @@ const Navbar = () => {
           Animations
         </Link>
         <Link
+          href="/products"
+          className="hover:text-blue-600 transition-colors"
+        >
+          CRUD
+        </Link>
+        <Link
           href="/cart"
           className="relative flex hover:text-blue-600 transition-colors"
         >
