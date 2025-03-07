@@ -4,9 +4,23 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Navbar = () => {
   const count = useSelector((state: RootState) => state.cart.items.length);
+  const queryClient = useQueryClient();
+  function fetchArticles() {
+    return fetch(
+      "https://67ca2fd7102d684575c4b4f8.mockapi.io/api/articles"
+    ).then((res) => res.json());
+  }
+
+  const prefetchArticles = () => {
+    queryClient.prefetchQuery({
+      queryKey: ["articles"],
+      queryFn: fetchArticles,
+    });
+  };
 
   return (
     <header className="w-full max-w-[100vw] px-8 py-4 bg-white flex justify-between items-center text-black fixed z-10 shadow-sm">
@@ -35,6 +49,7 @@ const Navbar = () => {
         <Link
           href="/articles"
           className="hover:text-blue-600 transition-colors"
+          onMouseEnter={prefetchArticles}
         >
           Articles
         </Link>

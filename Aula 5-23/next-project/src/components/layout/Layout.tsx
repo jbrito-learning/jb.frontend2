@@ -13,13 +13,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Navbar />
-        <main className="min-h-screen overflow-hidden py-20">
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
-        </main>
-        <Footer />
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+          <main className="min-h-screen overflow-hidden py-20">{children}</main>
+          <Footer />
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   );
