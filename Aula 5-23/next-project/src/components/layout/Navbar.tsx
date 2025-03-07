@@ -30,7 +30,13 @@ const Navbar = () => {
           href="/products"
           className="hover:text-blue-600 transition-colors"
         >
-          CRUD
+          Products
+        </Link>
+        <Link
+          href="/articles"
+          className="hover:text-blue-600 transition-colors"
+        >
+          Articles
         </Link>
         <Link
           href="/cart"
