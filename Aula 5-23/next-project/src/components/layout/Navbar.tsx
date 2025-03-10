@@ -1,14 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, LogIn, LogOut, User, NotebookPen } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useQueryClient } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const count = useSelector((state: RootState) => state.cart.items.length);
   const queryClient = useQueryClient();
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Check if user is logged in
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      try {
+        const response = await fetch("/api/me");
+        setIsLoggedIn(response.ok);
+      } catch (error) {
+        console.error("Error checking auth status:", error);
+        setIsLoggedIn(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuthStatus();
+  }, []);
+
   function fetchArticles() {
     return fetch(
       "https://67ca2fd7102d684575c4b4f8.mockapi.io/api/articles"
@@ -20,6 +43,25 @@ const Navbar = () => {
       queryKey: ["articles"],
       queryFn: fetchArticles,
     });
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setIsLoggedIn(false);
+        router.push("/login");
+        router.refresh();
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
@@ -67,6 +109,46 @@ const Navbar = () => {
         <Link href="/contact" className="hover:text-blue-600 transition-colors">
           Contact
         </Link>
+
+        {!isLoading && (
+          <>
+            {isLoggedIn ? (
+              <>
+                <Link
+                  href="/user"
+                  className="flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <User size={20} />
+                  <span>Perfil</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <LogOut size={20} />
+                  <span>Logout</span>
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <LogIn size={20} />
+                  <span>Login</span>
+                </Link>
+                <Link
+                  href="/register"
+                  className="flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <NotebookPen size={20} />
+                  <span>Register</span>
+                </Link>
+              </>
+            )}
+          </>
+        )}
       </nav>
     </header>
   );
