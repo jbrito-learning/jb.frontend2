@@ -19,11 +19,9 @@ function UserList() {
   }, [dispatch]);
 
   if (status === "loading") {
-    console.log("A carregar...");
     return <p>A carregar...</p>;
   }
   if (status === "failed") {
-    console.log("Erro ao carregar utilizadores.");
     return <p>Erro ao carregar utilizadores.</p>;
   }
 

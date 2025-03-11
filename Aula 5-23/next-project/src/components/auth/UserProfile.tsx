@@ -16,8 +16,6 @@ const UserProfile = () => {
       try {
         const response = await fetch("/api/me");
 
-        console.log(response);
-
         if (!response.ok) {
           const data = await response.json();
           throw new Error(data.error || "Erro ao carregar perfil");

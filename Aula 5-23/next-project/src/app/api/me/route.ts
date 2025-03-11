@@ -19,8 +19,6 @@ export async function GET(req: Request) {
       select: { id: true, email: true },
     });
 
-    console.log(user);
-
     if (!user) {
       return NextResponse.json(
         { error: "Utilizador não encontrado" },

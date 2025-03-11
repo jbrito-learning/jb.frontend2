@@ -12,8 +12,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  console.log(token);
-
   try {
     // Verifica se o token é válido usando jose em vez de jsonwebtoken
     await jwtVerify(token, new TextEncoder().encode(SECRET_KEY));
