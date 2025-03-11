@@ -29,9 +29,14 @@ const LoginForm = () => {
         throw new Error(data.error || "Erro no login");
       }
 
+      // Dispatch custom event to notify navbar of auth change
+      window.dispatchEvent(new Event("authChange"));
+
       // Login bem-sucedido, redirecionar para a página principal
-      router.push("/user");
-      router.refresh();
+      router.refresh(); // Refresh first to update server components
+      setTimeout(() => {
+        router.push("/user"); // Then navigate to user page
+      }, 100);
     } catch (err: any) {
       setError(err.message);
     } finally {

@@ -6,30 +6,46 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const Navbar = () => {
   const count = useSelector((state: RootState) => state.cart.items.length);
   const queryClient = useQueryClient();
   const router = useRouter();
+  const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Check if user is logged in
+  const checkAuthStatus = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/me");
+      setIsLoggedIn(response.ok);
+    } catch (error) {
+      console.error("Error checking auth status:", error);
+      setIsLoggedIn(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Check auth status on mount and when pathname changes
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const response = await fetch("/api/me");
-        setIsLoggedIn(response.ok);
-      } catch (error) {
-        console.error("Error checking auth status:", error);
-        setIsLoggedIn(false);
-      } finally {
-        setIsLoading(false);
-      }
+    checkAuthStatus();
+  }, [pathname]);
+
+  // Listen for auth status changes
+  useEffect(() => {
+    const handleAuthChange = () => {
+      checkAuthStatus();
     };
 
-    checkAuthStatus();
+    // Create a custom event listener for auth changes
+    window.addEventListener("authChange", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("authChange", handleAuthChange);
+    };
   }, []);
 
   function fetchArticles() {
@@ -56,6 +72,7 @@ const Navbar = () => {
 
       if (response.ok) {
         setIsLoggedIn(false);
+        window.dispatchEvent(new Event("authChange"));
         router.push("/");
         router.refresh();
       }
