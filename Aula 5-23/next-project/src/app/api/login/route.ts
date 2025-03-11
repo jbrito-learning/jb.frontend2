@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     const response = NextResponse.json({ message: "Login bem-sucedido" });
     response.headers.set(
       "Set-Cookie",
-      `token=${token}; HttpOnly; Path=/; Max-Age=3600`
+      `f2token=${token}; HttpOnly; Path=/; Max-Age=3600`
     );
 
     return response;

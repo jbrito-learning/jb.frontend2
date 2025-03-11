@@ -8,7 +8,7 @@ export async function POST() {
     // Clear the token cookie by setting it to expire in the past
     response.headers.set(
       "Set-Cookie",
-      `token=; HttpOnly; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`
+      `f2token=; HttpOnly; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`
     );
 
     return response;

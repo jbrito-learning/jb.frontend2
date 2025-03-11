@@ -16,6 +16,8 @@ const UserProfile = () => {
       try {
         const response = await fetch("/api/me");
 
+        console.log(response);
+
         if (!response.ok) {
           const data = await response.json();
           throw new Error(data.error || "Erro ao carregar perfil");
@@ -58,7 +60,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md text-black">
       <h2 className="text-2xl font-bold mb-6 text-center">
         Perfil do Utilizador
       </h2>

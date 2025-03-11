@@ -3,11 +3,11 @@ import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-const SECRET_KEY = process.env.JWT_SECRET || "super_secret_key";
+const SECRET_KEY = process.env.AUTH_SECRET || "super_secret_key";
 
 export async function GET(req: Request) {
   try {
-    const token = req.headers.get("cookie")?.split("token=")[1];
+    const token = req.headers.get("cookie")?.split("f2token=")[1];
 
     if (!token) {
       return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
@@ -18,6 +18,8 @@ export async function GET(req: Request) {
       where: { id: decoded.userId },
       select: { id: true, email: true },
     });
+
+    console.log(user);
 
     if (!user) {
       return NextResponse.json(

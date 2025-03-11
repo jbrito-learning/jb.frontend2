@@ -5,12 +5,14 @@ import { jwtVerify } from "jose";
 const SECRET_KEY = process.env.AUTH_SECRET || "super_secret_key";
 
 export async function middleware(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("f2token")?.value;
 
   if (!token) {
     // Se não houver token, redireciona para a página de login
     return NextResponse.redirect(new URL("/login", req.url));
   }
+
+  console.log(token);
 
   try {
     // Verifica se o token é válido usando jose em vez de jsonwebtoken

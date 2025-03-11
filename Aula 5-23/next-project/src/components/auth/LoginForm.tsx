@@ -31,7 +31,7 @@ const LoginForm = () => {
 
       // Login bem-sucedido, redirecionar para a página principal
       router.push("/user");
-      router.refresh(); // Atualizar a sessão no cliente
+      router.refresh();
     } catch (err: any) {
       setError(err.message);
     } finally {

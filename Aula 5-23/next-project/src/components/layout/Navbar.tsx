@@ -56,7 +56,7 @@ const Navbar = () => {
 
       if (response.ok) {
         setIsLoggedIn(false);
-        router.push("/login");
+        router.push("/");
         router.refresh();
       }
     } catch (error) {
