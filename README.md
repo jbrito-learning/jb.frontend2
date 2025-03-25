@@ -20,6 +20,8 @@
 
 - Navigation
 
+- Hosted Online (Vercel, Netlify or other)
+
 ## Bonus
 
 - ContextAPI or Redux
