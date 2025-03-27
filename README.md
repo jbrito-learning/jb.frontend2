@@ -22,7 +22,7 @@
 
 - Hosted Online (Vercel, Netlify or other)
 
-- Unit Testing (Pelo menos 4 testes)
+- Unit Testing
 
 - ContextAPI or Redux
 
