@@ -14,15 +14,15 @@
 
 - SEO
 
-- Unit Testing (Pelo menos 4 testes)
-
 - API CRUD Operations (Fetch or Axios)
 
 - Navigation
 
+## Bonus
+
 - Hosted Online (Vercel, Netlify or other)
 
-## Bonus
+- Unit Testing (Pelo menos 4 testes)
 
 - ContextAPI or Redux
 
